@@ -1,33 +1,3 @@
-# Dagger
-for creating and operating an object of a DAG hierarchy in a DCC tool.
-
-# Examples
-![dagTest1](https://i.gyazo.com/6cc2d8ca52f43921c927b111132aaac6.png "dagTest1")
-
-```python
-import dagger.dagger as dagger
-dagTest = dagger.DAGstructure("dagTest")
-
-# register dag top dag node "top_gp"
-dagTest.construct("top_gp")
-
-# print out to console
-dagTest.printout()
-
->>> top_gp
-        test_gpA
-            test_gpB
-                test_gpC
-                    test_jntA
-                test_gpD
-                    test_jntB
-
-
-# export as .xml file
-dagTest.export_xml("D:/test")
-```
-
-```xml
 <?xml version="1.0" encoding="utf-8"?>
 <dagStructure>
 	<node fullpath="|top_gp" name="top_gp">
@@ -101,30 +71,3 @@ dagTest.export_xml("D:/test")
 		</node>
 	</node>
 </dagStructure>
-
-```
-
-```python
-# import from .xml file
-dagTest = dagTest.DAGstructure.import_xml("D:/test/dagTest_dagInfo.xml")
-# build dag struture
-dagTest.build()
-dagTest.printout()
->>> top_gp
-        test_gpA
-            test_gpB
-                test_gpC
-                    test_jntA
-                test_gpD
-                    test_jntB
-
-# restore attribute
-dagTest.restore_attributes(attrs=['visibility'])
-
-```
-
-## Plans
-
-- Add GUI
-- Change to be independent of DCC tools
-- Support for .json
